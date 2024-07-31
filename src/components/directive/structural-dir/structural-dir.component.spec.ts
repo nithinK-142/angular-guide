@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DataBindingComponent } from './data-binding.component';
+import { StructuralDirComponent } from './structural-dir.component';
 
-describe('DataBindingComponent', () => {
-  let component: DataBindingComponent;
-  let fixture: ComponentFixture<DataBindingComponent>;
+describe('StructuralDirComponent', () => {
+  let component: StructuralDirComponent;
+  let fixture: ComponentFixture<StructuralDirComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DataBindingComponent]
+      imports: [StructuralDirComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DataBindingComponent);
+    fixture = TestBed.createComponent(StructuralDirComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

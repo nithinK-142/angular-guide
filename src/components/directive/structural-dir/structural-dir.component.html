@@ -1,0 +1,23 @@
+<div class="flex flex-col justify-center items-center">
+  <div class="space-y-4 mb-4">
+    <p *ngIf="isDivVisible; else inVisible">Visible</p>
+    <ng-template #inVisible> <p>Invisible</p> </ng-template>
+    <button
+      (click)="toggleDivVisibility()"
+      class="px-4 py-1 rounded-md text-lg bg-slate-800"
+    >
+      Toggle
+    </button>
+  </div>
+
+  <div>
+    <input type="checkbox" [(ngModel)]="isDivVisible" />
+  </div>
+
+  <select class="text-black px-3 py-1 rounded-md">
+    <option value="">Choose a Framework</option>
+    <option *ngFor="let framework of frameworks" [value]="framework">
+      {{ framework }}
+    </option>
+  </select>
+</div>
