@@ -1,0 +1,56 @@
+<div class="flex flex-col justify-center items-center">
+  <div class="space-y-4 m-4">
+    @if(isVisible){
+    <p class="text-green-500">Visible</p>
+    }@else{
+    <p class="text-green-500">Invisible</p>
+    }
+    <button
+      (click)="toggleVisibility()"
+      class="px-4 py-1 rounded-md text-lg bg-slate-800"
+    >
+      Toggle
+    </button>
+  </div>
+
+  <div>
+    <input type="checkbox" [(ngModel)]="isVisible" />
+  </div>
+
+  <select
+    class="text-black px-3 py-1 rounded-md"
+    [(ngModel)]="selectedFramework"
+  >
+    <option value="">Choose a Framework</option>
+    @for (framework of frameworks; track $index) {
+    <option [value]="framework">
+      {{ framework }}
+    </option>
+    }
+  </select>
+
+  <div class="mt-4">
+    @if (selectedFramework()) { @switch (selectedFramework()) { @case
+    ('Angular') {
+    <p class="text-green-500">
+      You selected Angular. Here's some Angular-specific content.
+    </p>
+    } @case ('React') {
+    <p class="text-green-500">
+      You selected React. Here's some React-specific content.
+    </p>
+    } @case ('Vue') {
+    <p class="text-green-500">
+      You selected Vue. Here's some Vue-specific content.
+    </p>
+    } @default {
+    <p class="text-red-500">
+      Selected framework has no specific content available.
+    </p>
+    } } } @else {
+    <p class="text-red-500">
+      Please select a framework to see specific content.
+    </p>
+    }
+  </div>
+</div>

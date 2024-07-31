@@ -29,6 +29,7 @@ export class AppComponent implements OnInit {
     { title: 'Data Binding', link: 'data-binding' },
     { title: 'Attribute Directive', link: 'directive/attribute-directive' },
     { title: 'Structural Directive', link: 'directive/structural-directive' },
+    { title: 'Control Flow Statements', link: 'control-flow-statements' },
   ];
 
   constructor(private router: Router) {}
@@ -38,7 +39,6 @@ export class AppComponent implements OnInit {
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe(() => {
         this.currentRoute = this.router.url;
-        console.log(this.currentRoute);
       });
   }
 }
