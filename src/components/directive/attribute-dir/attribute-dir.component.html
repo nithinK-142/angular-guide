@@ -1,0 +1,13 @@
+<div class="flex flex-col space-y-6 items-center mt-10">
+  <div
+    class="h-10 w-10 rounded-full bg-rose-500"
+    [ngClass]="isAnimation ? 'animate-bounce' : 'animate-none'"
+  ></div>
+  <button
+    (click)="toggleAnimation()"
+    class="px-4 py-1 rounded-md text-lg"
+    [ngStyle]="{ 'background-color': isAnimation ? 'red' : 'green' }"
+  >
+    {{ isAnimation ? "Remove animation" : "Add animation" }}
+  </button>
+</div>
