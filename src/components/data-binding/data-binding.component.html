@@ -1,0 +1,60 @@
+<h1 class="text-center text-2xl font-medium my-4">{{ concept }}</h1>
+
+<div class="flex flex-col space-y-2 mt-4">
+  <h2 class="text-center text-xl font-medium my-4">One way Data Binding</h2>
+  <div class="flex space-x-4 justify-center items-center">
+    <h3 class="my-2">interpolation</h3>
+    <input
+      type="{{ inputType }}"
+      value="{{ framework }}"
+      class="text-black px-2 py-1 rounded-md"
+    />
+    <button
+      (click)="showAlert('Interpolation')"
+      class="px-4 py-1 bg-slate-700 rounded-md"
+    >
+      Click Me
+    </button>
+  </div>
+
+  <div class="flex space-x-4 justify-center items-center">
+    <h3 class="my-2">Property Binding</h3>
+    <input
+      [type]="inputType"
+      [value]="framework"
+      class="text-black px-2 py-1 rounded-md"
+    />
+    <button
+      (click)="showAlert('Property Binding')"
+      class="px-4 py-1 bg-slate-700 rounded-md"
+    >
+      Click Me
+    </button>
+  </div>
+</div>
+
+<div class="flex flex-col space-y-2 mt-4">
+  <h2 class="text-center text-xl font-medium my-4">Two way Data Binding</h2>
+  <div class="flex space-x-4 justify-center items-center">
+    <h3 class="my-2">ngModule</h3>
+    <input
+      type="{{ inputType }}"
+      [(ngModel)]="otherFramework"
+      class="text-black px-2 py-1 rounded-md"
+    />
+    <p class="my-2">{{ otherFramework }}</p>
+  </div>
+</div>
+
+<div class="flex flex-col space-y-2 mt-4">
+  <h2 class="text-center text-xl font-medium my-4">Signals</h2>
+  <div class="flex space-x-2 justify-center items-center">
+    <h3>{{ username() }}</h3>
+    <input
+      type="{{ inputType }}"
+      [value]="username()"
+      (input)="updateUsername($event)"
+      class="text-black px-2 py-1 rounded-md"
+    />
+  </div>
+</div>
