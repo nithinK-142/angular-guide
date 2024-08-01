@@ -30,6 +30,7 @@ export class AppComponent implements OnInit {
     { title: 'Attribute Directive', link: 'directive/attribute-directive' },
     { title: 'Structural Directive', link: 'directive/structural-directive' },
     { title: 'Control Flow Statements', link: 'control-flow-statements' },
+    { title: 'Pipe', link: 'pipe' },
   ];
 
   constructor(private router: Router) {}

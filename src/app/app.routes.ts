@@ -4,6 +4,7 @@ import { DataBindingComponent } from '../components/data-binding/data-binding.co
 import { AttributeDirComponent } from '../components/directive/attribute-dir/attribute-dir.component';
 import { StructuralDirComponent } from '../components/directive/structural-dir/structural-dir.component';
 import { ControlFlowStatementsComponent } from '../components/control-flow-statements/control-flow-statements.component';
+import { PipeComponent } from '../components/pipe/pipe.component';
 
 export const routes: Routes = [
   {
@@ -25,5 +26,9 @@ export const routes: Routes = [
   {
     path: 'control-flow-statements',
     component: ControlFlowStatementsComponent,
+  },
+  {
+    path: 'pipe',
+    component: PipeComponent,
   },
 ];

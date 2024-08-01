@@ -1,0 +1,77 @@
+<div class="container mx-auto p-4">
+  <h2 class="text-2xl font-bold mb-4">Angular Pipe Examples</h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div class="bg-gray-700 p-4 rounded">
+      <h3 class="font-semibold mb-2">Date Pipe</h3>
+      <p>{{ today | date : "short" }}</p>
+      <p>{{ today | date : "fullDate" }}</p>
+      <p>{{ today | date : "dd-MM-yy" }}</p>
+      <p>{{ today | date : "dd-MM-yyyy" }}</p>
+      <p>{{ today | date : "dd-MMM-yy" }}</p>
+      <p>{{ today | date : "hh:mm:ss" }}</p>
+    </div>
+
+    <div class="bg-gray-700 p-4 rounded">
+      <h3 class="font-semibold mb-2">Decimal Pipe</h3>
+      <p>{{ 3.14159 | number : "1.2-2" }}</p>
+      <p>{{ 3.14159 | number : "3.1-5" }}</p>
+    </div>
+
+    <div class="bg-gray-700 p-4 rounded">
+      <h3 class="font-semibold mb-2">Currency Pipe</h3>
+      <p>{{ 123.45 | currency }}</p>
+      <p>{{ 123.45 | currency : "EUR" }}</p>
+      <p>{{ 123.45 | currency : "INR" }}</p>
+    </div>
+
+    <div class="bg-gray-700 p-4 rounded">
+      <h3 class="font-semibold mb-2">Percent Pipe</h3>
+      <p>{{ 0.1234 | percent }}</p>
+      <p>{{ 0.1234 | percent : "2.2-2" }}</p>
+    </div>
+
+    <div class="bg-gray-700 p-4 rounded">
+      <h3 class="font-semibold mb-2">
+        Uppercase, Lowercase, and Titlecase Pipes
+      </h3>
+      <p>{{ "hello world" | uppercase }}</p>
+      <p>{{ "HELLO WORLD" | lowercase }}</p>
+      <p>{{ "hello world" | titlecase }}</p>
+    </div>
+
+    <div class="bg-gray-700 p-4 rounded">
+      <h3 class="font-semibold mb-2">Slice Pipe</h3>
+      <p>{{ [1, 2, 3, 4, 5] | slice : 1 : 4 }}</p>
+      <p>{{ "Hello World" | slice : 6 : 11 }}</p>
+    </div>
+
+    <div class="bg-gray-700 p-4 rounded">
+      <h3 class="font-semibold mb-2">JSON Pipe</h3>
+      <pre>{{ jsonObj | json }}</pre>
+    </div>
+
+    <div class="bg-gray-700 p-4 rounded">
+      <h3 class="font-semibold mb-2">Observable Pipe</h3>
+      <p>{{ currentTime | async }}</p>
+    </div>
+
+    <div class="bg-gray-700 p-4 rounded">
+      <h3 class="font-semibold mb-2">Custom Pipe (Reverse)</h3>
+      <p>Hello World</p>
+      <p>{{ "Hello World" | reverse }}</p>
+    </div>
+
+    <div class="bg-gray-700 p-4 rounded">
+      <h3 class="font-semibold mb-2">Custom Pipe (Null Check)</h3>
+      <p>{{ jsonObj.state | na }}</p>
+    </div>
+  </div>
+</div>
+
+<style>
+  pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+</style>
