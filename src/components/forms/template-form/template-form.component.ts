@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, ViewChild } from '@angular/core';
+import { FormsModule, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-template-form',
@@ -8,6 +8,8 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './template-form.component.html',
 })
 export class TemplateFormComponent {
+  @ViewChild('form') form!: NgForm;
+
   formObj = {
     firstname: '',
     lastname: '',
@@ -20,12 +22,21 @@ export class TemplateFormComponent {
 
   formSubmission = {};
 
+  submitted = false;
+
   onSubmit() {
-    console.log(this.formObj);
-    this.resetForm();
+    this.submitted = true;
+    if (this.form.valid) {
+      console.log(this.formObj);
+      this.resetForm();
+    }
   }
 
   resetForm() {
+    if (this.form) {
+      this.form.resetForm();
+    }
+    this.submitted = false;
     this.formObj = {
       firstname: '',
       lastname: '',

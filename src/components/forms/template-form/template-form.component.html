@@ -1,4 +1,9 @@
-<form #form="ngForm" (ngSubmit)="onSubmit()" class="w-full max-w-lg">
+<form
+  #form="ngForm"
+  (ngSubmit)="onSubmit()"
+  (reset)="resetForm()"
+  class="w-full max-w-lg"
+>
   <div class="flex flex-wrap -mx-3 mb-6">
     <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
       <label
@@ -209,7 +214,7 @@
   </div>
   <div class="flex space-x-4">
     <button
-      (click)="resetForm()"
+      type="reset"
       class="bg-stone-600 font-medium disabled:bg-stone-500 hover:bg-stone-700 disabled:hover:bg-stone-400 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline cursor-pointer disabled:cursor-not-allowed"
     >
       Reset Form
