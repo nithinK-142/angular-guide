@@ -1,0 +1,21 @@
+<nav class="bg-black/50 py-1 rounded-xl">
+  <div class="flex flex-1 items-center justify-center">
+    <div class="hidden sm:ml-6 sm:block">
+      <div class="flex space-x-4">
+        <a
+          *ngFor="let route of routes"
+          [routerLink]="route.link"
+          [ngClass]="
+            currentRoute === '/' + route.link
+              ? 'bg-gray-700'
+              : 'hover:bg-gray-700'
+          "
+          class="text-gray-300 rounded-md px-3 py-2 text-sm font-medium hover:text-white"
+          aria-current="page"
+        >
+          {{ route.title }}
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>

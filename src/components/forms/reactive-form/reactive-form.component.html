@@ -1,0 +1,214 @@
+<form [formGroup]="userform" class="w-full max-w-lg">
+  <div class="flex flex-wrap -mx-3 mb-6">
+    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+      <label
+        class="block uppercase tracking-wide text-white text-xs font-bold mb-2"
+        for="firstname"
+      >
+        First Name
+      </label>
+      <input
+        id="firstname"
+        name="firstname"
+        type="text"
+        placeholder="Jane"
+        formControlName="firstname"
+        class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-2 leading-tight focus:outline-none focus:bg-white"
+      />
+      @if (userform.controls['firstname'].touched &&
+      userform.controls['firstname'].errors?.['required']) {
+      <p class="text-red-500 text-xs italic">Please fill out this field.</p>
+      } @else if (userform.controls['firstname'].touched &&
+      userform.controls['firstname'].errors?.['minlength']) {
+      <p class="text-red-500 text-xs italic">Min 3 chars required.</p>
+      } @else if (userform.controls['firstname'].touched &&
+      userform.controls['firstname'].errors?.['maxlength']) {
+      <p class="text-red-500 text-xs italic">Max 20 chars allowed.</p>
+      }
+    </div>
+    <div class="w-full md:w-1/2 px-3">
+      <label
+        class="block uppercase tracking-wide text-white text-xs font-bold mb-2"
+        for="lastname"
+      >
+        Last Name
+      </label>
+      <input
+        id="lastname"
+        name="lastname"
+        type="text"
+        placeholder="Doe"
+        formControlName="lastname"
+        class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 mb-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+      />
+      @if (userform.controls['lastname'].touched &&
+      userform.controls['lastname'].errors?.['required']) {
+      <p class="text-red-500 text-xs italic">Please fill out this field.</p>
+      } @else if (userform.controls['lastname'].touched &&
+      userform.controls['lastname'].errors?.['minlength']) {
+      <p class="text-red-500 text-xs italic">Min 1 char required.</p>
+      } @else if (userform.controls['lastname'].touched &&
+      userform.controls['lastname'].errors?.['maxlength']) {
+      <p class="text-red-500 text-xs italic">Max 20 chars allowed.</p>
+      }
+    </div>
+  </div>
+  <div class="flex flex-wrap -mx-3 mb-6">
+    <div class="w-full px-3">
+      <label
+        class="block uppercase tracking-wide text-white text-xs font-bold mb-2"
+        for="email"
+      >
+        Email
+      </label>
+      <input
+        id="email"
+        name="email"
+        type="email"
+        formControlName="email"
+        placeholder="jane@email.com"
+        class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-2 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+      />
+      @if (userform.controls['email'].touched &&
+      userform.controls['email'].errors?.['required']) {
+      <p class="text-red-500 text-xs italic">Please fill out this field.</p>
+      } @else if (userform.controls['email'].touched &&
+      userform.controls['email'].errors?.['email']) {
+      <p class="text-red-500 text-xs italic">
+        Please enter a valid email address.
+      </p>
+      } @else if (userform.controls['email'].touched &&
+      userform.controls['email'].errors?.['minlength']) {
+      <p class="text-red-500 text-xs italic">Min 3 chars required.</p>
+      } @else if (userform.controls['email'].touched &&
+      userform.controls['email'].errors?.['maxlength']) {
+      <p class="text-red-500 text-xs italic">Max 30 chars allowed.</p>
+      }
+    </div>
+  </div>
+  <div class="flex flex-wrap -mx-3 mb-2">
+    <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+      <label
+        class="block uppercase tracking-wide text-white text-xs font-bold mb-2"
+        for="city"
+      >
+        City
+      </label>
+      <input
+        id="city"
+        name="city"
+        type="text"
+        formControlName="city"
+        placeholder="Albuquerque"
+        class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 mb-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+      />
+      @if (userform.controls['city'].touched &&
+      userform.controls['city'].errors?.['required']) {
+      <p class="text-red-500 text-xs italic">Please fill out this field.</p>
+      } @else if (userform.controls['city'].touched &&
+      userform.controls['city'].errors?.['minlength']) {
+      <p class="text-red-500 text-xs italic">Min 3 chars required.</p>
+      } @else if (userform.controls['city'].touched &&
+      userform.controls['city'].errors?.['maxlength']) {
+      <p class="text-red-500 text-xs italic">Max 20 chars allowed.</p>
+      }
+    </div>
+    <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+      <label
+        class="block uppercase tracking-wide text-white text-xs font-bold mb-2"
+        for="state"
+      >
+        State
+      </label>
+      <div class="relative">
+        <select
+          id="state"
+          name="state"
+          formControlName="state"
+          class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 mb-2 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+        >
+          <option selected disabled value="">Choose...</option>
+          <option>New Mexico</option>
+          <option>Missouri</option>
+          <option>Texas</option>
+        </select>
+        <div
+          class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+        >
+          <svg
+            class="fill-current h-4 w-4"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+          >
+            <path
+              d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+            />
+          </svg>
+        </div>
+      </div>
+      @if (userform.controls['state'].touched &&
+      userform.controls['state'].errors?.['required']) {
+      <p class="text-red-500 text-xs italic">Please select a state.</p>
+      } @else if (userform.controls['state'].touched &&
+      userform.controls['state'].errors?.['minlength']) {
+      <p class="text-red-500 text-xs italic">Min 3 chars required.</p>
+      } @else if (userform.controls['state'].touched &&
+      userform.controls['state'].errors?.['maxlength']) {
+      <p class="text-red-500 text-xs italic">Max 20 chars allowed.</p>
+      }
+    </div>
+    <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+      <label
+        class="block uppercase tracking-wide text-white text-xs font-bold mb-2"
+        for="zipcode"
+      >
+        Zip
+      </label>
+      <input
+        id="zipcode"
+        name="zipcode"
+        type="text"
+        formControlName="zipcode"
+        class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 mb-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+      />
+      @if (userform.controls['zipcode'].touched &&
+      userform.controls['zipcode'].errors?.['required']) {
+      <p class="text-red-500 text-xs italic">Please fill out this field.</p>
+      } @else if (userform.controls['zipcode'].touched &&
+      userform.controls['zipcode'].errors?.['minlength']) {
+      <p class="text-red-500 text-xs italic">Min 6 chars required.</p>
+      } @else if (userform.controls['zipcode'].touched &&
+      userform.controls['zipcode'].errors?.['maxlength']) {
+      <p class="text-red-500 text-xs italic">Max 6 chars allowed.</p>
+      }
+    </div>
+  </div>
+  <div class="flex mb-6 mt-2">
+    <label class="md:w-2/3 block text-gray-500 font-bold">
+      <input
+        type="checkbox"
+        name="isSendLetter"
+        formControlName="isSendLetter"
+        class="mr-2 leading-tight"
+      />
+      <span class="text-sm"> Send me your newsletter! </span>
+    </label>
+  </div>
+  <div class="flex space-x-4">
+    <button
+      type="button"
+      (click)="resetForm()"
+      class="bg-stone-600 font-medium disabled:bg-stone-500 hover:bg-stone-700 disabled:hover:bg-stone-400 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline cursor-pointer disabled:cursor-not-allowed"
+    >
+      Reset Form
+    </button>
+    <button
+      type="submit"
+      (click)="onSubmit()"
+      [disabled]="!userform.valid"
+      class="bg-blue-600 font-medium disabled:bg-blue-500 hover:bg-blue-700 disabled:hover:bg-blue-400 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline cursor-pointer disabled:cursor-not-allowed"
+    >
+      Submit
+    </button>
+  </div>
+</form>
