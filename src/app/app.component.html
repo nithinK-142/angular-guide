@@ -1,32 +1,79 @@
-<style>
-  h1 {
-    font-family: Georgia, "Times New Roman", Times, serif;
-  }
-</style>
-
 <main>
-  <h1 class="text-3xl font-semibold text-center my-4">Angular Guide</h1>
   <nav class="bg-black/50 py-1">
     <div class="flex flex-1 items-center justify-center">
+      <h1 class="text-xl font-bold text-center my-4">AngularGuide</h1>
       <div class="hidden sm:ml-6 sm:block">
-        <div class="flex space-x-4">
-          <a
-            *ngFor="let route of routes"
-            [routerLink]="route.link"
-            [ngClass]="
-              currentRoute === '/' + route.link
-                ? 'bg-gray-700'
-                : 'hover:bg-gray-700'
-            "
-            class="text-gray-300 rounded-md px-3 py-2 text-sm font-medium hover:text-white"
-            aria-current="page"
-          >
-            {{ route.title }}
-          </a>
-        </div>
+        <ul class="flex items-center space-x-4">
+          <li *ngFor="let route of routes">
+            <ng-container *ngIf="!route.children; else dropdown">
+              <a
+                [routerLink]="route.link"
+                [ngClass]="
+                  isRouteActive(route) ? 'bg-gray-700' : 'hover:bg-gray-700'
+                "
+                class="text-gray-300 rounded-md px-3 py-2 text-sm font-medium hover:text-white"
+                aria-current="page"
+              >
+                {{ route.title }}
+              </a>
+            </ng-container>
+            <ng-template #dropdown>
+              <div class="relative inline-block text-left">
+                <div>
+                  <button
+                    type="button"
+                    (click)="toggleDropdown(route.title)"
+                    [ngClass]="
+                      isRouteActive(route) ? 'bg-gray-700' : 'hover:bg-gray-700'
+                    "
+                    class="text-gray-300 rounded-md px-3 py-2 text-sm font-medium hover:text-white inline-flex items-center"
+                    [attr.aria-expanded]="isDropdownOpen(route.title)"
+                    aria-haspopup="true"
+                  >
+                    {{ route.title }}
+                    <svg
+                      class="ml-2 h-5 w-5 text-gray-400"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                  </button>
+                </div>
+                <div
+                  *ngIf="isDropdownOpen(route.title)"
+                  class="absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-md bg-stone-600 text-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                  role="menu"
+                  tabindex="-1"
+                >
+                  <div class="py-1" role="none">
+                    <a
+                      *ngFor="let child of route.children"
+                      [routerLink]="child.link"
+                      class="block px-4 py-2 text-sm text-white hover:bg-stone-700 hover:text-white"
+                      [ngClass]="{
+                        'bg-bg-stone-700 text-white':
+                          currentRoute === '/' + child.link
+                      }"
+                      role="menuitem"
+                      tabindex="-1"
+                    >
+                      {{ child.title }}
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </li>
+        </ul>
       </div>
     </div>
   </nav>
 </main>
 
-<router-outlet />
+<router-outlet></router-outlet>

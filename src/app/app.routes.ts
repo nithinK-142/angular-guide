@@ -5,23 +5,39 @@ import { AttributeDirComponent } from '../components/directive/attribute-dir/att
 import { StructuralDirComponent } from '../components/directive/structural-dir/structural-dir.component';
 import { ControlFlowStatementsComponent } from '../components/control-flow-statements/control-flow-statements.component';
 import { PipeComponent } from '../components/pipe/pipe.component';
+import { ApiCallComponent } from '../components/api-call/api-call.component';
+import { ComponentTwoComponent } from '../components/component-two/component-two.component';
 
 export const routes: Routes = [
   {
     path: 'components',
-    component: ComponentOneComponent,
+    children: [
+      {
+        path: 'component1',
+        component: ComponentOneComponent,
+      },
+      {
+        path: 'component2',
+        component: ComponentTwoComponent,
+      },
+    ],
   },
   {
     path: 'data-binding',
     component: DataBindingComponent,
   },
   {
-    path: 'directive/attribute-directive',
-    component: AttributeDirComponent,
-  },
-  {
-    path: 'directive/structural-directive',
-    component: StructuralDirComponent,
+    path: 'directive',
+    children: [
+      {
+        path: 'attribute-directive',
+        component: AttributeDirComponent,
+      },
+      {
+        path: 'structural-directive',
+        component: StructuralDirComponent,
+      },
+    ],
   },
   {
     path: 'control-flow-statements',
@@ -30,5 +46,9 @@ export const routes: Routes = [
   {
     path: 'pipe',
     component: PipeComponent,
+  },
+  {
+    path: 'api-call',
+    component: ApiCallComponent,
   },
 ];
