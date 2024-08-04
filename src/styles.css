@@ -6,3 +6,28 @@ body {
   background-color: #212121;
   color: #fff;
 }
+
+/* Scrollbar */
+@layer components {
+  .floating-scrollbar {
+    height: 81vh;
+    padding: 0 0.4rem;
+    overflow-y: auto;
+    scrollbar-gutter: stable;
+  }
+
+  .floating-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+  }
+
+  .floating-scrollbar:hover {
+    scrollbar-color: #c2d2e47a black;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
