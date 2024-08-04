@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { environment } from '../../environment/environment';
+import { environment } from '../../environments/environment';
 import { CommonModule } from '@angular/common';
 
 interface Branch {
