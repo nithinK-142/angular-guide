@@ -1,6 +1,6 @@
 import { CommonModule, JsonPipe } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
+import { ApiServiceService } from '../../services/api-service.service';
 
 @Component({
   selector: 'app-api-call',
@@ -12,7 +12,7 @@ export class ApiCallComponent {
   users: any = [];
 
   // new way - injection
-  http = inject(HttpClient);
+  // http = inject(HttpClient);
 
   // old way to create http instance - dependency injection
   // constructor(private http: HttpClient){}
@@ -22,9 +22,9 @@ export class ApiCallComponent {
   //   this.getUsers();
   // }
 
+  constructor(private apiService: ApiServiceService) {}
+
   getUsers() {
-    this.http
-      .get('https://jsonplaceholder.typicode.com/users')
-      .subscribe((res: any) => (this.users = res));
+    this.apiService.getUsers().subscribe((res: any) => (this.users = res));
   }
 }
