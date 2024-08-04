@@ -1,0 +1,30 @@
+<div class="flex flex-col items-center space-y-4 mt-10">
+  <button (click)="getUsers()" class="bg-stone-400/60 px-4 py-1 rounded-md">
+    get users
+  </button>
+
+  <div *ngIf="users.length !== 0" class="bg-slate-800 rounded-md">
+    <table class="table-auto w-full text-left">
+      <thead>
+        <tr>
+          <th class="px-4 py-2 border">ID</th>
+          <th class="px-4 py-2 border">Name</th>
+          <th class="px-4 py-2 border">Username</th>
+          <th class="px-4 py-2 border">Email</th>
+          <th class="px-4 py-2 border">Phone</th>
+          <th class="px-4 py-2 border">Website</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td class="px-4 py-2 border">{{ user.id }}</td>
+          <td class="px-4 py-2 border">{{ user.name }}</td>
+          <td class="px-4 py-2 border">{{ user.username }}</td>
+          <td class="px-4 py-2 border">{{ user.email }}</td>
+          <td class="px-4 py-2 border">{{ user.phone }}</td>
+          <td class="px-4 py-2 border">{{ user.website }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
