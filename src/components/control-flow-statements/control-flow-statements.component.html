@@ -5,12 +5,11 @@
     }@else{
     <p class="text-green-500">Invisible</p>
     }
-    <button
-      (click)="toggleVisibility()"
-      class="px-4 py-1 rounded-md text-lg bg-slate-800"
-    >
-      Toggle
-    </button>
+    <app-buttonn
+      (onBtnClick)="toggleVisibility()"
+      [btnText]="'Toggle'"
+      [btnClass]="'px-4 py-1 rounded-md text-lg bg-slate-800'"
+    ></app-buttonn>
   </div>
 
   <div>
