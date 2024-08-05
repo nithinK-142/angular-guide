@@ -59,6 +59,7 @@ export class AppComponent implements OnInit {
     { title: 'Control Flow Statements', link: 'control-flow-statements' },
     { title: 'Pipe', link: 'pipe' },
     { title: 'API Call', link: 'api-call' },
+    { title: 'LifeCycle', link: 'lifecycle' },
   ];
 
   constructor(private router: Router) {}

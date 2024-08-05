@@ -7,6 +7,7 @@ import { ControlFlowStatementsComponent } from '../components/control-flow-state
 import { PipeComponent } from '../components/pipe/pipe.component';
 import { ApiCallComponent } from '../components/api-call/api-call.component';
 import { ComponentTwoComponent } from '../components/component-two/component-two.component';
+import { LifecycleHooksComponent } from '../components/lifecycle-hooks/lifecycle-hooks.component';
 
 export const routes: Routes = [
   {
@@ -50,5 +51,9 @@ export const routes: Routes = [
   {
     path: 'api-call',
     component: ApiCallComponent,
+  },
+  {
+    path: 'lifecycle',
+    component: LifecycleHooksComponent,
   },
 ];
