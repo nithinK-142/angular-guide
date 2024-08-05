@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root',
 })
-export class ApiServiceService {
+export class ApiUsersService {
   constructor(private http: HttpClient) {}
 
   private API_URL = 'https://jsonplaceholder.typicode.com/users';

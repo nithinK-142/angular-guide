@@ -1,6 +1,6 @@
 import { CommonModule, JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
-import { ApiServiceService } from '../../services/api-service.service';
+import { ApiUsersService } from '../../services/api-users.service';
 
 @Component({
   selector: 'app-api-call',
@@ -22,7 +22,7 @@ export class ApiCallComponent {
   //   this.getUsers();
   // }
 
-  constructor(private apiService: ApiServiceService) {}
+  constructor(private apiService: ApiUsersService) {}
 
   getUsers() {
     this.apiService.getUsers().subscribe((res: any) => (this.users = res));
