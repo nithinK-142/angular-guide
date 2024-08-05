@@ -7,9 +7,6 @@ interface User {
   id: number;
   username: string;
   password: string;
-  isEditing?: boolean;
-  editUsername?: string;
-  editPassword?: string;
 }
 
 @Component({
@@ -19,7 +16,8 @@ interface User {
   templateUrl: './user.component.html',
 })
 export class UserComponent {
-  newUser = { username: '', password: '' };
+  newUser = { id: 0, username: '', password: '' };
+  isEditing = false;
   users: User[] = [];
 
   constructor(private userService: UserService) {}
@@ -31,10 +29,18 @@ export class UserComponent {
   loadUsers() {
     this.userService.getUsers().subscribe({
       next: (data) => {
-        this.users = data.map((user: User) => ({ ...user, isEditing: false }));
+        this.users = data;
       },
       error: (error) => console.error('Error fetching users:', error),
     });
+  }
+
+  onSubmit() {
+    if (this.isEditing) {
+      this.updateUser();
+    } else {
+      this.createUser();
+    }
   }
 
   createUser() {
@@ -48,35 +54,18 @@ export class UserComponent {
     this.userService.createUser(this.newUser).subscribe({
       next: () => {
         this.loadUsers();
-        this.newUser = { username: '', password: '' };
+        this.resetForm();
       },
       error: (error) => console.error('Error creating user:', error),
     });
   }
 
-  editUser(user: User) {
-    user.isEditing = true;
-    user.editUsername = user.username;
-    user.editPassword = user.password;
-  }
-
-  cancelEdit(user: User) {
-    user.isEditing = false;
-  }
-
-  updateUser(user: User) {
-    if (user.editUsername && user.editPassword) {
-      const updatedUser: User = {
-        id: user.id,
-        username: user.editUsername,
-        password: user.editPassword,
-      };
-
-      this.userService.updateUser(updatedUser).subscribe({
+  updateUser() {
+    if (this.newUser.username && this.newUser.password) {
+      this.userService.updateUser(this.newUser).subscribe({
         next: () => {
-          user.username = updatedUser.username;
-          user.password = updatedUser.password;
-          user.isEditing = false;
+          this.loadUsers();
+          this.resetForm();
         },
         error: (error) => console.error('Error updating user:', error),
       });
@@ -88,5 +77,15 @@ export class UserComponent {
       next: () => this.loadUsers(),
       error: (error) => console.error('Error deleting user:', error),
     });
+  }
+
+  editUser(user: User) {
+    this.isEditing = true;
+    this.newUser = { ...user };
+  }
+
+  resetForm() {
+    this.newUser = { id: 0, username: '', password: '' };
+    this.isEditing = false;
   }
 }

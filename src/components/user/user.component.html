@@ -1,7 +1,7 @@
 <div class="container mx-auto p-4">
   <h1 class="text-3xl font-bold mb-6">Users</h1>
 
-  <form (ngSubmit)="createUser()" class="mb-8">
+  <form (ngSubmit)="onSubmit()" class="mb-8">
     <div class="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
       <input
         [(ngModel)]="newUser.username"
@@ -22,7 +22,7 @@
         type="submit"
         class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
       >
-        Add User
+        {{ isEditing ? "Save Edit" : "Add User" }}
       </button>
     </div>
   </form>
@@ -32,43 +32,16 @@
       *ngFor="let user of users"
       class="flex items-center justify-between bg-gray-500 p-4 rounded-md"
     >
-      @if (user.isEditing) {
-      <input
-        [(ngModel)]="user.editUsername"
-        class="px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
-      />
-      <input
-        [(ngModel)]="user.editPassword"
-        type="password"
-        class="px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
-      />
-      } @else {
       <span class="font-medium">{{ user.username }}</span>
       <span class="font-medium">{{ user.password }}</span>
-      }
 
       <div class="space-x-2">
-        @if (user.isEditing) {
-        <button
-          (click)="updateUser(user)"
-          class="px-3 py-1 bg-green-500 text-white rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
-        >
-          Save
-        </button>
-        <button
-          (click)="cancelEdit(user)"
-          class="px-3 py-1 bg-gray-500 text-white rounded-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
-        >
-          Cancel
-        </button>
-        } @else {
         <button
           (click)="editUser(user)"
           class="px-3 py-1 bg-green-500 text-white rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
         >
           Edit
         </button>
-        }
         <button
           (click)="deleteUser(user.id)"
           class="px-3 py-1 bg-red-500 text-white rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
