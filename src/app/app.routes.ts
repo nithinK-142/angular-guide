@@ -11,69 +11,78 @@ import { LifecycleHooksComponent } from '../components/lifecycle-hooks/lifecycle
 import { NgtemplateComponent } from '../components/directive/template-dir/ngtemplate/ngtemplate.component';
 import { NgcontainerComponent } from '../components/directive/template-dir/ngcontainer/ngcontainer.component';
 import { ViewchildComponent } from '../components/viewchild/viewchild.component';
+import { LayoutComponent } from '../components/layout/layout.component';
+import { HomeComponent } from '../components/home/home.component';
 
 export const routes: Routes = [
   {
-    path: 'components',
+    path: '',
+    component: LayoutComponent,
     children: [
+      { path: 'home', component: HomeComponent },
       {
-        path: 'component1',
-        component: ComponentOneComponent,
-      },
-      {
-        path: 'component2',
-        component: ComponentTwoComponent,
-      },
-    ],
-  },
-  {
-    path: 'data-binding',
-    component: DataBindingComponent,
-  },
-  {
-    path: 'directive',
-    children: [
-      {
-        path: 'attribute-directive',
-        component: AttributeDirComponent,
-      },
-      {
-        path: 'structural-directive',
-        component: StructuralDirComponent,
-      },
-      {
-        path: 'template-directive',
+        path: 'components',
         children: [
           {
-            path: 'ng-template',
-            component: NgtemplateComponent,
+            path: 'component1',
+            component: ComponentOneComponent,
           },
           {
-            path: 'ng-container',
-            component: NgcontainerComponent,
+            path: 'component2',
+            component: ComponentTwoComponent,
           },
         ],
       },
+      {
+        path: 'data-binding',
+        component: DataBindingComponent,
+      },
+      {
+        path: 'directive',
+        children: [
+          {
+            path: 'attribute-directive',
+            component: AttributeDirComponent,
+          },
+          {
+            path: 'structural-directive',
+            component: StructuralDirComponent,
+          },
+          {
+            path: 'template-directive',
+            children: [
+              {
+                path: 'ng-template',
+                component: NgtemplateComponent,
+              },
+              {
+                path: 'ng-container',
+                component: NgcontainerComponent,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        path: 'control-flow-statements',
+        component: ControlFlowStatementsComponent,
+      },
+      {
+        path: 'pipe',
+        component: PipeComponent,
+      },
+      {
+        path: 'api-call',
+        component: ApiCallComponent,
+      },
+      {
+        path: 'lifecycle',
+        component: LifecycleHooksComponent,
+      },
+      {
+        path: 'viewchild',
+        component: ViewchildComponent,
+      },
     ],
-  },
-  {
-    path: 'control-flow-statements',
-    component: ControlFlowStatementsComponent,
-  },
-  {
-    path: 'pipe',
-    component: PipeComponent,
-  },
-  {
-    path: 'api-call',
-    component: ApiCallComponent,
-  },
-  {
-    path: 'lifecycle',
-    component: LifecycleHooksComponent,
-  },
-  {
-    path: 'viewchild',
-    component: ViewchildComponent,
   },
 ];
