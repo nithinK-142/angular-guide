@@ -10,6 +10,7 @@ import { ComponentTwoComponent } from '../components/component-two/component-two
 import { LifecycleHooksComponent } from '../components/lifecycle-hooks/lifecycle-hooks.component';
 import { NgtemplateComponent } from '../components/directive/template-dir/ngtemplate/ngtemplate.component';
 import { NgcontainerComponent } from '../components/directive/template-dir/ngcontainer/ngcontainer.component';
+import { ViewchildComponent } from '../components/viewchild/viewchild.component';
 
 export const routes: Routes = [
   {
@@ -70,5 +71,9 @@ export const routes: Routes = [
   {
     path: 'lifecycle',
     component: LifecycleHooksComponent,
+  },
+  {
+    path: 'viewchild',
+    component: ViewchildComponent,
   },
 ];

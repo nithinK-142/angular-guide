@@ -70,6 +70,7 @@ export class AppComponent implements OnInit {
     { title: 'Pipe', link: 'pipe' },
     { title: 'API Call', link: 'api-call' },
     { title: 'LifeCycle', link: 'lifecycle' },
+    { title: 'Viewchild', link: 'viewchild' },
   ];
 
   constructor(private router: Router) {}
