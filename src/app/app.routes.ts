@@ -8,6 +8,7 @@ import { PipeComponent } from '../components/pipe/pipe.component';
 import { ApiCallComponent } from '../components/api-call/api-call.component';
 import { ComponentTwoComponent } from '../components/component-two/component-two.component';
 import { LifecycleHooksComponent } from '../components/lifecycle-hooks/lifecycle-hooks.component';
+import { NgtemplateComponent } from '../components/directive/template-dir/ngtemplate/ngtemplate.component';
 
 export const routes: Routes = [
   {
@@ -37,6 +38,15 @@ export const routes: Routes = [
       {
         path: 'structural-directive',
         component: StructuralDirComponent,
+      },
+      {
+        path: 'template-directive',
+        children: [
+          {
+            path: 'ng-template',
+            component: NgtemplateComponent,
+          },
+        ],
       },
     ],
   },

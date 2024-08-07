@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import {
   RouterLink,
@@ -6,18 +5,16 @@ import {
   Router,
   NavigationEnd,
 } from '@angular/router';
+import { CommonModule } from '@angular/common';
 import { filter } from 'rxjs/operators';
 
-interface SingleRoute {
-  title: string;
-  link: string;
-}
-
-interface Route {
+interface RouteItem {
   title: string;
   link?: string;
-  children?: SingleRoute[];
+  children?: RouteItem[];
 }
+
+type Routes = RouteItem;
 
 @Component({
   selector: 'app-root',
@@ -28,9 +25,9 @@ interface Route {
 export class AppComponent implements OnInit {
   title = 'angular-guide';
   currentRoute: string = '';
-  openDropdown: string | null = null;
+  openDropdowns: string[] = [];
 
-  routes: Route[] = [
+  routes: Routes[] = [
     { title: 'Home', link: '' },
     {
       title: 'Components',
@@ -54,6 +51,15 @@ export class AppComponent implements OnInit {
           title: 'Structural Directive',
           link: 'directive/structural-directive',
         },
+        {
+          title: 'Template Directive',
+          children: [
+            {
+              title: 'Ng Template',
+              link: 'directive/template-directive/ng-template',
+            },
+          ],
+        },
       ],
     },
     { title: 'Control Flow Statements', link: 'control-flow-statements' },
@@ -69,26 +75,37 @@ export class AppComponent implements OnInit {
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe(() => {
         this.currentRoute = this.router.url;
-        this.openDropdown = null;
+        this.openDropdowns = [];
       });
   }
 
-  toggleDropdown(routeTitle: string) {
-    this.openDropdown = this.openDropdown === routeTitle ? null : routeTitle;
+  toggleDropdown(routePath: string) {
+    const index = this.openDropdowns.indexOf(routePath);
+    if (index > -1) {
+      this.openDropdowns.splice(index, 1);
+    } else {
+      this.openDropdowns.push(routePath);
+    }
   }
 
-  isDropdownOpen(routeTitle: string): boolean {
-    return this.openDropdown === routeTitle;
+  isDropdownOpen(routePath: string): boolean {
+    return this.openDropdowns.includes(routePath);
   }
 
-  isRouteActive(route: Route): boolean {
+  isRouteActive(route: Routes): boolean {
     if (route.link) {
       return this.currentRoute === '/' + route.link;
     } else if (route.children) {
-      return route.children.some((child) =>
-        this.currentRoute.startsWith('/' + child.link)
-      );
+      return route.children.some((child) => this.isRouteActive(child));
     }
     return false;
+  }
+
+  getRoutePath(route: Routes): string {
+    return route.link || route.title;
+  }
+
+  trackByFn(index: number, item: RouteItem): string {
+    return item.link || item.title;
   }
 }
