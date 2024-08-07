@@ -58,6 +58,10 @@ export class AppComponent implements OnInit {
               title: 'Ng Template',
               link: 'directive/template-directive/ng-template',
             },
+            {
+              title: 'Ng Container',
+              link: 'directive/template-directive/ng-container',
+            },
           ],
         },
       ],

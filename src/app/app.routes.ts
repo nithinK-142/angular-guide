@@ -9,6 +9,7 @@ import { ApiCallComponent } from '../components/api-call/api-call.component';
 import { ComponentTwoComponent } from '../components/component-two/component-two.component';
 import { LifecycleHooksComponent } from '../components/lifecycle-hooks/lifecycle-hooks.component';
 import { NgtemplateComponent } from '../components/directive/template-dir/ngtemplate/ngtemplate.component';
+import { NgcontainerComponent } from '../components/directive/template-dir/ngcontainer/ngcontainer.component';
 
 export const routes: Routes = [
   {
@@ -45,6 +46,10 @@ export const routes: Routes = [
           {
             path: 'ng-template',
             component: NgtemplateComponent,
+          },
+          {
+            path: 'ng-container',
+            component: NgcontainerComponent,
           },
         ],
       },
