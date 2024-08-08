@@ -24,7 +24,7 @@ export class LoginComponent {
       next: (res: any) => {
         alert('Login successful');
         this.router.navigateByUrl('home');
-        localStorage.setItem('loggedinUser', res.uusername);
+        localStorage.setItem('loggedinUser', res.username);
       },
       error: (err: any) => {
         console.error('Login error:', err);
