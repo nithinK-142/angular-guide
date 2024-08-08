@@ -13,13 +13,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.username = localStorage.getItem('loggedinUser');
-    if (
-      this.username == '' ||
-      this.username == undefined ||
-      this.username == null
-    ) {
-      this.router.navigateByUrl('login');
-    }
   }
 
   logout() {
