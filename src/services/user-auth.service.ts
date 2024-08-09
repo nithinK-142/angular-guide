@@ -6,6 +6,7 @@ import { inject, Injectable } from '@angular/core';
 })
 export class UserAuthService {
   http = inject(HttpClient);
+  isLoggedin = false;
   private API_URL = 'http://localhost:3000/api';
 
   login(data: any) {

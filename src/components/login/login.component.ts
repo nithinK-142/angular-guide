@@ -23,8 +23,9 @@ export class LoginComponent {
     this.userAuthService.login(this.userObj).subscribe({
       next: (res: any) => {
         alert('Login successful');
-        this.router.navigateByUrl('home');
+        this.userAuthService.isLoggedin = true;
         localStorage.setItem('loggedinUser', res.username);
+        this.router.navigateByUrl('home');
       },
       error: (err: any) => {
         console.error('Login error:', err);
