@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ValidationMessagePipe } from '../../pipes/validation-message.pipe';
 
 interface User {
   id: number;
@@ -12,7 +13,7 @@ interface User {
 @Component({
   selector: 'app-user',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, ValidationMessagePipe],
   templateUrl: './user.component.html',
 })
 export class UserComponent {

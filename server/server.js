@@ -21,10 +21,9 @@ db.connect((err) => {
   console.log("Connected to database");
 });
 
-// CRUD operations
-
 app.get("/", (_req, res) => res.send("Hello from server!"));
 
+// GET - get users
 app.get("/users", (_req, res) => {
   db.query("SELECT * FROM `angular-db`", (err, results) => {
     if (err) {
@@ -35,6 +34,7 @@ app.get("/users", (_req, res) => {
   });
 });
 
+// POST - create user
 app.post("/users", (req, res) => {
   const { username, password } = req.body;
   console.log("creating user backend");
@@ -51,6 +51,7 @@ app.post("/users", (req, res) => {
   );
 });
 
+// PUT - edit user
 app.put("/users/:id", (req, res) => {
   const { id } = req.params;
   const { username, password } = req.body;
@@ -67,6 +68,7 @@ app.put("/users/:id", (req, res) => {
   );
 });
 
+// DELETE - delete user
 app.delete("/users/:id", (req, res) => {
   const { id } = req.params;
   db.query("DELETE FROM `angular-db` WHERE id = ?", [id], (err) => {
