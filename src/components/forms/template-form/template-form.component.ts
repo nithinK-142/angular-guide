@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Customer } from '../../../models/class/Customer';
+import { ICustomer } from '../../../models/interface/ICustomer';
 
 @Component({
   selector: 'app-template-form',
@@ -8,7 +10,14 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './template-form.component.html',
 })
 export class TemplateFormComponent {
-  formObj = {
+  // creating variable to bind form - class
+  // creating variable to hold array - interface
+
+  // initializing with class
+  formObj: Customer = new Customer();
+
+  // initializing with interface
+  formObjI: ICustomer = {
     firstname: '',
     lastname: '',
     password: '',
