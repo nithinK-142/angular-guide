@@ -13,6 +13,7 @@ import { NgcontainerComponent } from '../components/directive/template-dir/ngcon
 import { ViewchildComponent } from '../components/viewchild/viewchild.component';
 import { LayoutComponent } from '../components/layout/layout.component';
 import { HomeComponent } from '../components/home/home.component';
+import { SignalComponent } from '../components/signal/signal.component';
 
 export const routes: Routes = [
   {
@@ -82,6 +83,10 @@ export const routes: Routes = [
       {
         path: 'viewchild',
         component: ViewchildComponent,
+      },
+      {
+        path: 'signal',
+        component: SignalComponent,
       },
     ],
   },

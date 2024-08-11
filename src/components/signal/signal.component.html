@@ -1,0 +1,74 @@
+<div class="flex flex-col items-center gap-4">
+  <h1>Signals</h1>
+  <div>
+    <h2>{{ firstname() }}{{ lastname() }}</h2>
+    <h3>
+      {{ computedName() }}
+    </h3>
+    <div>
+      <app-buttonn
+        (onBtnClick)="changeFirstName()"
+        [btnText]="'Change firstname'"
+        class="px-4 py-1 bg-slate-700 rounded-md"
+      ></app-buttonn>
+      <app-buttonn
+        (onBtnClick)="changeLastName()"
+        [btnText]="'Change lastname'"
+        class="px-4 py-1 bg-slate-700 rounded-md"
+      ></app-buttonn>
+    </div>
+  </div>
+
+  <div>
+    <p>Number1 : {{ num1() }}</p>
+    <p>Number2 : {{ num2() }}</p>
+    <p>Sum : {{ sum() }}</p>
+
+    <div>
+      <app-buttonn
+        (onBtnClick)="incrementNum1()"
+        [btnText]="'Increment Num1'"
+        class="px-4 py-1 bg-slate-700 rounded-md"
+      ></app-buttonn>
+      <app-buttonn
+        (onBtnClick)="incrementNum2()"
+        [btnText]="'Increment Num2'"
+        class="px-4 py-1 bg-slate-700 rounded-md"
+      ></app-buttonn>
+    </div>
+  </div>
+
+  <div>
+    <select [(ngModel)]="cityName" class="text-black px-2 py-1 rounded-md">
+      <option value="" disabled selected>Select City</option>
+      <option value="Mumbai">Mumbai</option>
+      <option value="Delhi">Delhi</option>
+      <option value="Surat">Surat</option>
+      <option value="Kolkata">Kolkata</option>
+    </select>
+
+    <select [(ngModel)]="isVisited" class="text-black px-2 py-1 rounded-md">
+      <option [ngValue]="false">Not visited</option>
+      <option [ngValue]="true">Visited</option>
+    </select>
+
+    <app-buttonn
+      (onBtnClick)="addCity()"
+      [btnText]="'Add City'"
+      class="px-4 py-1 bg-slate-700 rounded-md"
+    ></app-buttonn>
+    <div>
+      @for (city of cities(); track city.city) {
+      <li
+        (click)="toggleIsVisited(city)"
+        class="bg-white/60 text-black px-4 py-2 rounded-md flex justify-between"
+      >
+        <span>{{ city.city }}</span>
+        <button class="border px-2">
+          {{ city.isVisit ? "visited" : "not visited" }}
+        </button>
+      </li>
+      }
+    </div>
+  </div>
+</div>

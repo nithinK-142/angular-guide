@@ -71,6 +71,7 @@ export class LayoutComponent implements OnInit {
     { title: 'API Call', link: 'api-call' },
     { title: 'LifeCycle', link: 'lifecycle' },
     { title: 'Viewchild', link: 'viewchild' },
+    { title: 'Signal', link: 'signal' },
   ];
 
   constructor(private router: Router) {}
