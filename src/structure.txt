@@ -1,0 +1,18 @@
+app
+    core
+        // code
+        Constant => api Constant | validation Message | reg Exp | aws | email
+        Models => class | interface 
+        Services => utility | Module Services | generic service | subject | behavioursubject
+        Enums => optional
+        Guards => canActivate | canDeactivate
+        Interceptors => tokenInterceptor or headerInterceptor | errorInterceptor or responseInterceptor
+    shared
+        pipes (custom)
+        directives (custom)
+        reusableComponents
+    Pages
+        components (with Routes)
+    Environments
+        dev
+        prod
