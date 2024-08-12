@@ -52,4 +52,5 @@ export const routes: Routes[] = [
   { title: 'Viewchild', link: 'viewchild' },
   { title: 'Signal', link: 'signal' },
   { title: 'RxJS', link: 'rxjs' },
+  { title: 'ZoneJs', link: 'zonejs' },
 ];

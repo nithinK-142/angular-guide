@@ -15,6 +15,7 @@ import { LayoutComponent } from '../components/layout/layout.component';
 import { HomeComponent } from '../components/home/home.component';
 import { SignalComponent } from '../components/signal/signal.component';
 import { RxjsComponent } from '../components/rxjs/rxjs.component';
+import { ZonejsComponent } from '../components/zonejs/zonejs.component';
 
 export const routes: Routes = [
   {
@@ -92,6 +93,10 @@ export const routes: Routes = [
       {
         path: 'rxjs',
         component: RxjsComponent,
+      },
+      {
+        path: 'zonejs',
+        component: ZonejsComponent,
       },
     ],
   },
