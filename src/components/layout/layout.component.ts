@@ -7,74 +7,27 @@ import {
 } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { filter } from 'rxjs/operators';
-
-interface RouteItem {
-  title: string;
-  link?: string;
-  children?: RouteItem[];
-}
-
-type Routes = RouteItem;
+import { RouteItem, Routes, routes } from '../../constants/routes';
+import { UserRolesService } from '../../services/user-roles.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-layout',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, CommonModule],
+  imports: [RouterOutlet, RouterLink, CommonModule, FormsModule],
   templateUrl: './layout.component.html',
 })
 export class LayoutComponent implements OnInit {
   title = 'angular-guide';
   currentRoute: string = '';
   openDropdowns: string[] = [];
+  routes = routes;
+  selectedRole: string = '';
 
-  routes: Routes[] = [
-    { title: 'Home', link: 'home' },
-    {
-      title: 'Components',
-      children: [
-        {
-          title: 'Component1',
-          link: 'components/component1',
-        },
-        {
-          title: 'Component2',
-          link: 'components/component2',
-        },
-      ],
-    },
-    { title: 'Data Binding', link: 'data-binding' },
-    {
-      title: 'Directive',
-      children: [
-        { title: 'Attribute Directive', link: 'directive/attribute-directive' },
-        {
-          title: 'Structural Directive',
-          link: 'directive/structural-directive',
-        },
-        {
-          title: 'Template Directive',
-          children: [
-            {
-              title: 'Ng Template',
-              link: 'directive/template-directive/ng-template',
-            },
-            {
-              title: 'Ng Container',
-              link: 'directive/template-directive/ng-container',
-            },
-          ],
-        },
-      ],
-    },
-    { title: 'Control Flow Statements', link: 'control-flow-statements' },
-    { title: 'Pipe', link: 'pipe' },
-    { title: 'API Call', link: 'api-call' },
-    { title: 'LifeCycle', link: 'lifecycle' },
-    { title: 'Viewchild', link: 'viewchild' },
-    { title: 'Signal', link: 'signal' },
-  ];
-
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private userRolesService: UserRolesService
+  ) {}
 
   ngOnInit() {
     this.router.events
@@ -113,5 +66,10 @@ export class LayoutComponent implements OnInit {
 
   trackByFn(index: number, item: RouteItem): string {
     return item.link || item.title;
+  }
+
+  onRoleChange(selectedRole: string) {
+    this.userRolesService.setRole(selectedRole);
+    // this.userRolesService.rolesSubject$.next(selectedRole);
   }
 }

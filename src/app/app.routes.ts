@@ -14,6 +14,7 @@ import { ViewchildComponent } from '../components/viewchild/viewchild.component'
 import { LayoutComponent } from '../components/layout/layout.component';
 import { HomeComponent } from '../components/home/home.component';
 import { SignalComponent } from '../components/signal/signal.component';
+import { RxjsComponent } from '../components/rxjs/rxjs.component';
 
 export const routes: Routes = [
   {
@@ -87,6 +88,10 @@ export const routes: Routes = [
       {
         path: 'signal',
         component: SignalComponent,
+      },
+      {
+        path: 'rxjs',
+        component: RxjsComponent,
       },
     ],
   },

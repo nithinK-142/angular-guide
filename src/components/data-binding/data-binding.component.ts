@@ -1,5 +1,6 @@
-import { Component, signal } from '@angular/core';
+import { Component, computed, effect, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { UserRolesService } from '../../services/user-roles.service';
 
 @Component({
   selector: 'app-data-binding',
@@ -15,7 +16,17 @@ export class DataBindingComponent {
 
   username = signal('Nithin');
 
-  constructor() {}
+  constructor(private userRolesService: UserRolesService) {}
+  adminMessage(): string {
+    let message = '';
+    this.userRolesService.rolesSubject$.subscribe((role) => {
+      if (role === 'Admin') {
+        return (message = 'Nithin is an Admin');
+      }
+      return (message = '');
+    });
+    return message;
+  }
 
   showAlert(message: string) {
     alert(message);

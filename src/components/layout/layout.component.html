@@ -132,6 +132,19 @@
           </div>
         </li>
         } }
+        <li>
+          <select
+            [(ngModel)]="selectedRole"
+            name="selectedRole"
+            (ngModelChange)="onRoleChange($event)"
+            class="mt-1 block w-full pl-3 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md text-black"
+          >
+            <option value="">Roles</option>
+            <option value="user">User</option>
+            <option value="admin">Admin</option>
+            <option value="guest">Guest</option>
+          </select>
+        </li>
       </ul>
     </div>
   </div>
